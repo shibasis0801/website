@@ -7,6 +7,23 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('valves', function() {
+    this.route('new');
+  });
+  this.route('users', function() {
+    this.route('new');
+  });
+  this.route('valve', {path: '/valve/:valve_id'}, function() {
+    this.route('edit');
+  });
+  this.route('user', {path: '/user/:user_id'}, function() {
+    this.route('edit');
+  });
+  this.route('admin', function() {
+    this.route('new');
+  });
+  this.route('about');
+  this.route('invalid', {path: '/*path'});
 });
 
 export default Router;

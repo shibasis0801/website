@@ -2,10 +2,13 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const Bulma = 'node_modules/bulma';
 
 module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
+    sassOptions: {
+      includePaths : [Bulma]
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated
