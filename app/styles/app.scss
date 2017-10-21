@@ -1,1 +1,6 @@
+$black:        hsl(0, 0%, 4%) !default
+$white:        hsl(0, 0%, 100%) !default
+
+$card-shadow: 0 2px 3px rgba($white, 0.1), 0 0 0 10px rgba($white, 0.1);
+
 @import 'bulma';

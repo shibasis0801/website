@@ -1,8 +1,6 @@
 {{#if session.isAuthenticated}}
-  Logged in as {{session.currentUser.email}}
-  <button {{action 'signOut'}}>
-    Sign Out
-  </button>
+  {{log session.currentUser}}
+
   <nav class="navbar is-light">
     <div class="navbar-brand">
       <a class="navbar-item" href="#">
@@ -11,11 +9,11 @@
         </h1>
       </a>
       <!-- Add Here Later -->
-      <button class="button navbar-burger is-light">
+      <span class="navbar-burger burger">
         <span></span>
         <span></span>
         <span></span>
-      </button>
+      </span>
     </div>
 
     <div class="navbar-menu">
@@ -65,6 +63,13 @@
             About
           {{/link-to}}
         </div>
+
+        <div class="navbar-item is-hoverable">
+          <a class="navbar-item" {{action 'signOut'}}>
+            Sign Out
+          </a>
+        </div>
+
       </div>
       <div class="navbar-end">
         <div class="navbar-item is-hoverable">
@@ -97,24 +102,48 @@
     </div>
   </section>
 {{else}}
-  <form>
+  <section class="hero is-dark is-fullheight">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <div class="card">
+          <div class="card-content">
+            <form>
+            <div class="field">
+              <label class="label" for="input_email">Email</label>
+              <div id="input_email" class="control has-icons-left has-icons-right">
+                {{input
+                  type='email'
+                  class='input'
+                  value=model.credentials.email
+                  placeholder='Ex. shibasis0801@gmail.com'
+                }}
+                <span class="icon is-small is-left">
+                  <i class="fa fa-envelope"></i>
+                </span>
+              </div>
+            </div>
 
-
-  {{input
-    type='text'
-    class='form-control'
-    value=model.credentials.email
-    placeholder='email'
-  }}
-  {{input
-    type='password'
-    class='form-control'
-    value=model.credentials.password
-    placeholder='password'
-  }}
-  <button {{action 'signIn'}}>
-    Sign In
-  </button>
-
-  </form>
+            <div class="field">
+              <label class="label" for="input_password">Password</label>
+              <div id="input_password" class="control has-icons-left has-icons-right">
+                {{input
+                  type='password'
+                  class='input'
+                  value=model.credentials.password
+                  placeholder='Ex. Ruler05Valves$'
+                }}
+                <span class="icon is-small is-left">
+                  <i class="fa fa-envelope"></i>
+                </span>
+              </div>
+            </div>
+              <button class="button is-info" {{action 'signIn' model model.credentials.email model.credentials.password}}>
+                Sign In
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 {{/if}}

@@ -11,21 +11,16 @@ export default Route.extend({
     })
   },
   actions: {
-    signIn() {
-      console.log(this.get('model.credentials').);
-
+    signIn(model, email, password) {
       this.get('session')
         .open('firebase', {
           provider: 'password',
-          password: this.get('password'),
-          email: this.get('email')
+          password: password,
+          email: email
         })
         .then(data => {
-          alert(data.currentUser);
+          model.credentials.destroyRecord();
         })
-        .then(
-
-        )
     },
     signOut() {
       this.get('session').close();
