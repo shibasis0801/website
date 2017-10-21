@@ -1,0 +1,16 @@
+Commit 1>
+
+Authentication Working using Torii.
+Should be secure.
+>No outward calls to non-google APIs possible.
+>htmlSafe automatically called on input fields.
+
+Not Implemented
+1. Recheck Security
+2. Wrong Email/Password
+3. Account Recovery
+
+Did not use firebase ui. Felt too complicated. Maybe Later
+
+/**********************************************************************/
+

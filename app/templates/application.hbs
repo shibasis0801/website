@@ -1,3 +1,4 @@
+
 {{#if session.isAuthenticated}}
   {{log session.currentUser}}
 
@@ -59,7 +60,7 @@
 
         <!-- About -->
         <div class="navbar-item is-hoverable">
-          {{#link-to 'about' class='navbar-item'}}
+          {{#link-to 'posts' class='navbar-item'}}
             About
           {{/link-to}}
         </div>
@@ -87,13 +88,12 @@
       </div>
     </div>
   </nav>
-  <section class="hero is-dark is-fullheight">
+
+  <section class="hero is-fullheight is-dark">
     <div class="hero-body">
-      <div class="container">
-        {{outlet}}
-      </div>
+      {{outlet}}
     </div>
-    <div class="hero-footer">
+    <div class="hero-foot">
       <div class="container has-text-centered">
         <a href="https://bulma.io/">
           <img src="https://bulma.io/images/made-with-bulma--semiwhite.png" alt="Made with Bulma" width="160" height="30">

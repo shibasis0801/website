@@ -24,6 +24,7 @@ Router.map(function() {
   });
   this.route('about');
   this.route('invalid', {path: '/*path'});
+  this.route('posts');
 });
 
 export default Router;
