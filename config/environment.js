@@ -3,6 +3,17 @@
 
 module.exports = function(environment) {
   let ENV = {
+    firebase: {
+      apiKey: "AIzaSyBaBsCAzTAO3VMBvB8WITsSw_fXiYpVF34",
+      authDomain: "smartvalve-82205.firebaseapp.com",
+      databaseURL: "https://smartvalve-82205.firebaseio.com",
+      projectId: "smartvalve-82205",
+      storageBucket: "smartvalve-82205.appspot.com",
+      messagingSenderId: "672991853076"
+    },
+    torii: {
+      sessionServiceName: 'session'
+    },
     modulePrefix: 'website',
     environment,
     rootURL: '/',
