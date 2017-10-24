@@ -1,5 +1,6 @@
 /*This is our main wrapping element, it's made 100vh high to ensure it is always the correct size and then moved into place and padded with negative margin and padding*/
 
+
 .Container {
   display: flex;
   height: 100vh;
@@ -27,6 +28,13 @@ WebKit inertia scrolling is being added here for any present/future devices that
 .Middle {
   flex: 1;
 }
+$primary:      hsl(171, 100%, 41%);
+$grey-darker:  hsl(0, 0%, 21%);
+$grey-dark:    hsl(0, 0%, 29%);
+$grey:         hsl(0, 0%, 48%);
+$grey-light:   hsl(0, 0%, 71%);
+$grey-lighter: hsl(0, 0%, 86%);
+
 
 $black:        hsl(0, 0%, 4%) !default;
 $white:        hsl(0, 0%, 100%) !default;
@@ -37,7 +45,6 @@ $card-shadow: 0 2px 3px rgba($white, 0.1), 0 0 0 10px rgba($white, 0.1);
 
 .menu-list a {
   color: #0F1D38;
-
 }
 .menu-list a:hover {
   background-color: transparent;

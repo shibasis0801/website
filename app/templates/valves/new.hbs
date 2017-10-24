@@ -1,1 +1,65 @@
-{{outlet}}
+<section class="section">
+  <div class="container">
+    <form>
+      <div class="block">
+        <label for="id">Unique Valve ID</label>
+        {{input
+          value=model.valve.valveID
+          class="input"
+          placeholder="Enter UNIQUE ID"
+          type="text" name="name" id="id" required=true}}
+      </div>
+
+      <div class="block">
+        <label for="name">Name</label>
+        {{input
+          value=model.valve.name
+          class="input"
+          placeholder="Enter Valve Name"
+          type="text" name="name" id="name" required=true}}
+      </div>
+
+      <div class="block">
+        <label for="description">Description</label>
+        {{textarea
+          value=model.valve.description
+          class="textarea"
+          placeholder="Say something about the valve"
+          name="description" id="description" cols="30" rows="10" required=true}}
+      </div>
+
+      <div class="block">
+        <label for="users">Users</label>
+          {{#x-select
+            value=model.valve.users
+            class="select is-multiple"
+            name="users" id="users" multiple=true required=false
+          }}
+            {{#each model.users as |user|}}
+                {{#xs.option
+                  value=user}}
+
+                  {{user.displayName}}
+
+                {{/xs.option}}
+            {{/each}}
+          {{/x-select}}
+      </div>
+
+      <div class="block">
+        <div class="level">
+          <div class="level-left">
+            <a {{action "create"}} type="submit" class="button is-info">
+              Create
+            </a>
+          </div>
+          <div class="level-right">
+            <a {{action "cancel"}} class="button is-danger">
+              Cancel
+            </a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

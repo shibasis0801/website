@@ -1,9 +1,6 @@
 
 <div class="Container">
   <div class="Left">
-    <section class="hero is-fullheight">
-      <div class="hero-body">
-        <div class="container is-fullhd">
           <aside class="menu">
             <p class="menu-label">
             <div class="control has-icons-right">
@@ -23,64 +20,9 @@
               {{/each}}
             </ul>
           </aside>
-        </div>
-      </div>
-    </section>
   </div>
   <div class="Middle">
-      <div class="container">
-        <ul>
-          {{#each model as |valve|}}
-            <li>
-              <div class="box">
-                <article class="media">
-                  <div class="media-content">
-                    <div class="content">
-                      <p>
-                        <strong>{{valve.name}}</strong>
-                        <br>
-                        {{valve.description}}
-                      </p>
-                    </div>
-                    <nav class="level">
-                      <div class="level-left">
-                        <a class="level-item">
-                          <p>{{valve.status}}</p>
-                        </a>
-                      </div>
-                      <div class="level-right">
-                        <a class="level-item">
-                          {{#if valve.state}}
-                            <i {{action 'switch' valve 0}} class="fa fa-toggle-on fa-lg" aria-hidden="true"></i>
-                          {{else}}
-                            <i {{action 'switch' valve 1}} class="fa fa-toggle-off fa-lg" aria-hidden="true"></i>
-                          {{/if}}
-                        </a>
-                      </div>
-                    </nav>
-                    <nav class="level">
-                      <div class="level-left">
-                        <a class="level-item button is-danger">
-                          <i class="fa fa-trash-o fa-lg"></i>
-                          <space></space>
-                          Delete
-                        </a>
-                      </div>
-                      <div class="level-right">
-                        <a class="level-item button is-info">
-                          <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
-                          Edit
-                        </a>
-                      </div>
-                    </nav>
-                  </div>
-                </article>
-              </div>
-            </li>
-          {{/each}}
-        </ul>
-      </div>
+    {{outlet}}
   </div>
 </div>
 
-{{outlet}}
