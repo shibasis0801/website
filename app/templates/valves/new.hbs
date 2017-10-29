@@ -4,7 +4,7 @@
       <div class="block">
         <label for="id">Unique Valve ID</label>
         {{input
-          value=model.valve.valveID
+          value=id
           class="input"
           placeholder="Enter UNIQUE ID"
           type="text" name="name" id="id" required=true}}
@@ -13,7 +13,7 @@
       <div class="block">
         <label for="name">Name</label>
         {{input
-          value=model.valve.name
+          value=name
           class="input"
           placeholder="Enter Valve Name"
           type="text" name="name" id="name" required=true}}
@@ -22,7 +22,7 @@
       <div class="block">
         <label for="description">Description</label>
         {{textarea
-          value=model.valve.description
+          value=description
           class="textarea"
           placeholder="Say something about the valve"
           name="description" id="description" cols="30" rows="10" required=true}}
@@ -31,11 +31,10 @@
       <div class="block">
         <label for="users">Users</label>
           {{#x-select
-            value=model.valve.users
             class="select is-multiple"
             name="users" id="users" multiple=true required=false
-          }}
-            {{#each model.users as |user|}}
+            value=users as |xs|}}
+            {{#each model as |user|}}
                 {{#xs.option
                   value=user}}
 

@@ -11,6 +11,12 @@ export default Route.extend({
           valve.set('state', on);
           valve.save();
         });
+    },
+    delete(id) {
+      this.store.findRecord('valve', id)
+        .then(value => {
+          value.destroyRecord()
+        })
     }
   }
 });

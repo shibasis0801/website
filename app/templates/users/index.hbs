@@ -1,1 +1,56 @@
-{{outlet}}
+<div class="container">
+  {{#each model as |user|}}
+    <div class="block">
+      <div class="box">
+        <article class="media">
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong>{{user.displayName}}</strong>
+              </p>
+            </div>
+            <div class="content">
+              <p>
+                {{user.email}}
+              </p>
+            </div>
+            <div class="content">
+              <p>
+                {{user.phoneNumber}}
+              </p>
+            </div>
+            <nav class="level">
+              <div class="level-left">
+                <a {{action "delete" user.id}} class="level-item button is-danger">
+                  <i class="fa fa-trash-o fa-lg"></i>
+                  <space></space>
+                  Delete
+                </a>
+              </div>
+              <div class="level-right">
+                <a class="level-item button is-info">
+                  <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>
+                  Edit
+                </a>
+              </div>
+            </nav>
+          </div>
+        </article>
+      </div>
+    </div>
+  {{/each}}
+
+  <div class="block">
+    <div class="level">
+      <div class="level-left">
+
+      </div>
+      <div class="level-right">
+        {{#link-to "users.new" class="button is-info"}}
+          Add
+        {{/link-to}}
+      </div>
+    </div>
+
+  </div>
+</div>
