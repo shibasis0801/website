@@ -14,8 +14,8 @@ export default Route.extend({
     },
     delete(id) {
       this.store.findRecord('valve', id)
-        .then(value => {
-          value.destroyRecord()
+        .then(valve => {
+          valve.destroyRecord()
         })
     }
   }

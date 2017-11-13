@@ -29,20 +29,32 @@
       </div>
 
       <div class="block">
-        <label for="users">Users</label>
-          {{#x-select
-            class="select is-multiple"
-            name="users" id="users" multiple=true required=false
-            value=users as |xs|}}
-            {{#each model as |user|}}
-                {{#xs.option
-                  value=user}}
+        <div class="field is-grouped is-grouped-multiline">
+          {{#each users as |user|}}
 
-                  {{user.displayName}}
+            <div class="control">
+              <div class="tags">
+                <a class="tag is-link is-medium">{{user.displayName}}</a>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
 
-                {{/xs.option}}
-            {{/each}}
-          {{/x-select}}
+
+      <div class="block">
+        {{#multiselect-checkboxes
+          onchange=(action 'selectionChanged')
+          options=model
+          selection=selectedUsers as |user isSelected|}}
+
+          <div>
+            <label>
+              {{input type="checkbox" checked=isSelected}}
+              {{user.displayName}}
+            </label>
+          </div>
+        {{/multiselect-checkboxes}}
       </div>
 
       <div class="block">

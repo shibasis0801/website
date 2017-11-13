@@ -4,6 +4,9 @@ export default Controller.extend({
   firebaseApp: Ember.inject.service(),
   users: [],
   actions: {
+    selectionChanged(newSelection, value, operation) {
+      this.set('users', newSelection);
+    },
     create() {
       const db = this.get('firebaseApp').database();
 
@@ -13,26 +16,31 @@ export default Controller.extend({
        *
        * So, i use normal firebase instead.
        */
-      function format(users) {
+      function idEmail(users) {
+
         if (users == null)
           return null;
+
         let result = {};
 
         users.forEach(user => {
-          result[user] = true;
+          //Hackery Promises didnot work.
+          result[user.id] = user._internalModel.__data.email;
         });
+
         return result;
       }
 
-      db.ref("valves" + "/" + this.get('id'))
-        .set({
-          name: this.get('name'),
-          description: this.get('description'),
-          users: format(this.get('users'))
-        })
-        .then(() => {
-          this.transitionToRoute('valves');
-        });
+      const valve = db.ref("valves" + "/" + this.get('id'));
+
+      valve.set({
+        name: this.get('name'),
+        description: this.get('description'),
+        users: idEmail(this.get('users'))
+      })
+      .then(() => {
+        this.transitionToRoute('valves');
+      });
     },
     cancel() {
       transitionToRoute('valves');

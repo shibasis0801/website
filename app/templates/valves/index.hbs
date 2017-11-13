@@ -1,5 +1,19 @@
 
     <div class="container">
+
+      <div class="block">
+        <div class="level">
+          <div class="level-left">
+
+          </div>
+          <div class="level-right">
+            {{#link-to "valves.new" class="button is-info"}}
+              Add
+            {{/link-to}}
+          </div>
+        </div>
+      </div>
+
       {{#each model as |valve|}}
         <div class="block">
           <div class="box">
@@ -49,17 +63,4 @@
         </div>
       {{/each}}
 
-      <div class="block">
-        <div class="level">
-          <div class="level-left">
-
-          </div>
-          <div class="level-right">
-            {{#link-to "valves.new" class="button is-info"}}
-              Add
-            {{/link-to}}
-          </div>
-        </div>
-
-      </div>
     </div>
