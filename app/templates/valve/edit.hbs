@@ -1,1 +1,75 @@
-{{outlet}}
+<section class="section">
+  <div class="container">
+    <form>
+      <div class="block">
+        <label for="id">Unique Valve ID</label>
+        {{input
+          value=model.valve.id
+          class="input"
+          placeholder="Enter UNIQUE ID"
+          type="text" name="name" id="id" required=true}}
+      </div>
+
+      <div class="block">
+        <label for="name">Name</label>
+        {{input
+          value=model.valve.name
+          class="input"
+          placeholder="Enter Valve Name"
+          type="text" name="name" id="name" required=true}}
+      </div>
+
+      <div class="block">
+        <label for="description">Description</label>
+        {{textarea
+          value=model.valve.description
+          class="textarea"
+          placeholder="Say something about the valve"
+          name="description" id="description" cols="30" rows="10" required=true}}
+      </div>
+
+      <div class="block">
+        <div class="field is-grouped is-grouped-multiline">
+          {{#each model.valve.users as |user|}}
+
+            <div class="control">
+              <div class="tags">
+                <a class="tag is-link is-medium">{{user.email}}</a>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+
+      <div class="block">
+        {{#multiselect-checkboxes
+          onchange=(action 'selectionChanged')
+          options=model.users
+          selection=selectedUsers as |user isSelected|}}
+
+          <div>
+            <label>
+              {{input type="checkbox" checked=isSelected}}
+              {{user.displayName}}
+            </label>
+          </div>
+        {{/multiselect-checkboxes}}
+      </div>
+
+      <div class="block">
+        <div class="level">
+          <div class="level-left">
+            <a {{action "save" model.valve}} type="submit" class="button is-info">
+              Save
+            </a>
+          </div>
+          <div class="level-right">
+            <a {{action "cancel"}} class="button is-danger">
+              Cancel
+            </a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

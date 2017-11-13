@@ -7,6 +7,5 @@ export default DS.Model.extend({
   description: DS.attr('string'),
   state: DS.attr('boolean'),
   status: DS.attr('number'),
-  users: DS.hasMany('user'),
-  userEmail: DS.attr('string')
+  users: DS.hasMany('user')
 });

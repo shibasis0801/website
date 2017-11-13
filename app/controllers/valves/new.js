@@ -31,13 +31,17 @@ export default Controller.extend({
         return result;
       }
 
-      const valve = db.ref("valves" + "/" + this.get('id'));
+      const valve = db.ref("valves" + "/ID_" + this.get('id'));
 
       valve.set({
         name: this.get('name'),
         description: this.get('description'),
         users: idEmail(this.get('users'))
       })
+        .then(() => {
+          return db.ref("valveUser/ID_" + this.get('id'))
+            .set("DEFAULT_LOCK")
+        })
       .then(() => {
         this.transitionToRoute('valves');
       });
